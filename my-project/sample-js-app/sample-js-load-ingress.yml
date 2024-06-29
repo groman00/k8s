@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-sample-js-app
+  labels:
+    chapter: services
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080 # Exposed Port
+      targetPort: 3000 # Application Port
+      protocol: TCP
+  selector:
+    chapter: services

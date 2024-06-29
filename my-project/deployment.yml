@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      chapter: services
+  template:
+    metadata:
+      labels:
+        chapter: services
+    spec:
+      containers:
+        - name: sample-js-app
+          image: node-docker
+          ports:
+            - containerPort: 3000
