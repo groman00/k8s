@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-sample-js-app
+  name: svc-roku-remote
   labels:
-    chapter: services
+    app.kubernetes.io/name: roku-remote
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080 # Exposed Port
+    - port: 8000 # Exposed Port
       targetPort: 3000 # Application Port
       protocol: TCP
   selector:
-    chapter: services
+    app.kubernetes.io/name: roku-remote

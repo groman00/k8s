@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-roku-remote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: roku-remote
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: roku-remote
+    spec:
+      containers:
+        - name: roku-remote
+          image: gregorymichaelroman/sample-app:latest
+          ports:
+            - containerPort: 3000

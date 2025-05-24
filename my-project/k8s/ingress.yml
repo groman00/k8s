@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-network
+  labels:
+    app: internal-network
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: local-lifx-balancer
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-lifx-balancer
+                port:
+                  number: 7000
+    - host: local-roku-remote.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-roku-remote
+                port:
+                  number: 8000
+    - host: local-lifx-web-controller.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-lifx-web-controller
+                port:
+                  number: 9000

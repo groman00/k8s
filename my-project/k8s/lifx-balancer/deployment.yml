@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-lifx-balancer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: lifx-balancer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: lifx-balancer
+    spec:
+      containers:
+        - name: lifx-balancer
+          image: gregorymichaelroman/sample-app:latest
+          ports:
+            - containerPort: 3000

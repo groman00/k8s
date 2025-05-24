@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-lifx-balancer
+  labels:
+    app.kubernetes.io/name: lifx-balancer
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 7000 # Exposed Port
+      targetPort: 3000 # Application Port
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: lifx-balancer
